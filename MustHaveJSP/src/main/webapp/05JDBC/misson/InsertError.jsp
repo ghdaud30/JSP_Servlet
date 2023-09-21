@@ -4,9 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
 <title>Insert Error</title>
 </head>
 <body>
-	<h2>${requestScope.msg}</h2>
+	<div class=container>
+		<h2><%= request.getAttribute("msg") %></h2>
+		<a href="./InsertForm.jsp">이전으로 돌아가기</a>
+	</div>
 </body>
 </html>

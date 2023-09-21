@@ -30,4 +30,9 @@
   	<param-name>MySQLPwd</param-name>
   	<param-value>tiger</param-value>
   </context-param>
+  
+  
+  <session-config>
+  	<session-timeout>50</session-timeout>
+  </session-config>
 </web-app>

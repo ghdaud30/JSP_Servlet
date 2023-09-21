@@ -4,10 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
 <title>Insert Success</title>
 </head>
 <body>
-	<h2>${requestScope.msg}</h2>
-	<p>Your Insertion is completely finished!!!</p>
+	<div class="container">
+		<h2><%= request.getAttribute("msg") %></h2>
+		<a href="./InsertForm.jsp">이전으로 돌아가기</a>
+	</div>
 </body>
 </html>
