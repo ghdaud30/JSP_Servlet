@@ -7,6 +7,10 @@
 String userId = request.getParameter("user_id");
 String userPwd = request.getParameter("user_pw");
 
+String loginID = request.getParameter("login_id");
+String loginPW = request.getParameter("login_pw");
+String loginName = request.getParameter("login_name");
+
 String mysqlDriver = application.getInitParameter("MySQLDriver");
 String mysqlURL = application.getInitParameter("MySQLURL");
 String mysqlId = application.getInitParameter("MySQLId");
