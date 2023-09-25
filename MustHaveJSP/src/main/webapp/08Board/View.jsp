@@ -58,7 +58,7 @@ dao.close();
 					<button type="button" onclick="deletePost();">삭제하기</button> <%
 					}
 					%>
-					<button type="button" location.href='List.jsp';">목록보기</button>
+					<button type="button" onclick = "location.href='./List.jsp';">목록 보기</button>
 				</td>
 			</tr>
 		</table>

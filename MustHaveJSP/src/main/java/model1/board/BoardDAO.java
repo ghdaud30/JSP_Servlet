@@ -152,29 +152,30 @@ public class BoardDAO extends JDBConnect{
 			System.out.println("게시물 조회수 증가 중 예외 발생");
 			System.out.println(e.getMessage());
 		}
+	}
+	
+	//DAO에 게시물 글 수정하기 메서드 추가
+	public int updateEdit(BoardDTO dto) {
 		
+		int result = 0;
 		
+		try {
+			String query = "UPDATE board SET "
+					+ " title = ?, content = ? "
+					+ " WHERE num = ? ";
+			
+			Connection con = getConnection();
+			PreparedStatement psmt = con.prepareStatement(query);
+			psmt.setString(1,dto.getTitle());
+			psmt.setString(2,dto.getContent());
+			psmt.setString(3,dto.getNum());
+			result = psmt.executeUpdate();
+		}
+		catch (Exception e) {
+			System.out.println("게시물 글 수정 중 예외 발생");
+			System.out.println(e.getMessage());
+		}
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		return result;	
 	}
 }
