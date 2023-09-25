@@ -14,7 +14,7 @@
 			return false;
 		}
 		if (form.content.value == "") {
-			alert("제목을 입력하세요.");
+			alert("내용을 입력하세요.");
 			form.title.focus();
 			return false;
 		}
