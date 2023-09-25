@@ -75,6 +75,47 @@ public class BoardDAO extends JDBConnect{
 		
 		return bbs;
 	}
+	
+	// 검색 조건에 맞는 게시물 목록을 반환합니다(페이징 기능 지원)
+	public List<BoardDTO> selectListPage(Map<String, Object> map){
+		List<BoardDTO> bbs = new Vector<>();
+		
+		String query = "SELECT * FROM board";
+		
+		if(map.get("searchWord") != null) {
+			query += " WHERE " + map.get("searchField") + " "
+					+ " LIKE '%" + map.get("searchWord") + "%' ";
+		}
+		query += " ORDER BY num DESC LIMIT ? , ?";
+		
+		
+		try {
+			Connection con = getConnection();
+			PreparedStatement psmt = con.prepareStatement(query);
+			psmt.setInt(1, (int)map.get("start"));
+			psmt.setInt(2, (int)map.get("pageSize"));
+
+			ResultSet rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				BoardDTO dto = new BoardDTO();
+				
+				dto.setNum(rs.getString(1));
+				dto.setTitle(rs.getString(2));
+				dto.setContent(rs.getString(3));
+				dto.setId(rs.getString(4));
+				dto.setPostdate(rs.getDate(5));
+				dto.setVisitcount(rs.getString(6));
+				
+				bbs.add(dto);
+			}
+		}catch(Exception e) {
+			System.out.println("게시물 조회 중 예외 발생");
+			System.out.println(e.getMessage());
+		}
+		
+		return bbs;
+	}
 
 	public int inserWrite(BoardDTO dto) {
 		int result = 0;
@@ -177,5 +218,39 @@ public class BoardDAO extends JDBConnect{
 		}
 		
 		return result;	
+	}
+	
+	public int deletePost(BoardDTO dto) {
+		
+		int result = 0;
+		
+		try {
+			String query = "DELETE FROM board WHERE num = ?";
+			
+			Connection con = getConnection();
+			PreparedStatement psmt = con.prepareStatement(query);
+			psmt.setString(1,dto.getNum());
+			result = psmt.executeUpdate();
+		}
+		catch (Exception e) {
+			System.out.println("게시물 삭제 수정 중 예외 발생");
+			System.out.println(e.getMessage());
+		}
+		
+		return result;	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 }
