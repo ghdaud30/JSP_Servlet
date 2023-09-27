@@ -10,6 +10,16 @@
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
   
+    
+<!--   <servlet> -->
+<!--   	<servlet-name>HelloServlet</servlet-name> -->
+<!--   	<servlet-class>servlet.HelloServlet</servlet-class> -->
+<!--   </servlet> -->
+<!--   <servlet-mapping> -->
+<!--   	<servlet-name>HelloServlet</servlet-name> -->
+<!--   	<url-pattern>/12Servlet/HelloServlet.do</url-pattern> -->
+<!--   </servlet-mapping> -->
+  
   <context-param>
   	<param-name>INIT_PARAM</param-name>
   	<param-value>web.xml에 저장한 초기화 매개변수</param-value>
@@ -43,4 +53,5 @@
   <session-config>
   	<session-timeout>50</session-timeout>
   </session-config>
+
 </web-app>
